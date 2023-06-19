@@ -10,15 +10,15 @@ namespace resource.preview
             {
                 {
                     context.
-                        SetFontState(NAME.FONT_STATE.BLINK).
-                        SetProgress(NAME.PROGRESS.INFINITE).
+                        SetTrace(null, NAME.STATE.TRACE.BLINK).
+                        SetProgress(CONSTANT.PROGRESS.INFINITE).
                         SendPreview(NAME.EVENT.INFO, url);
                 }
                 {
                 }
                 {
                     context.
-                        SetFontState(NAME.FONT_STATE.NONE).
+                        SetTrace(null, NAME.STATE.TRACE.NONE).
                         SetProgress(100).
                         SendPreview(NAME.EVENT.INFO, url);
                 }

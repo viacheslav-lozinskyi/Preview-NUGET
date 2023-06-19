@@ -26,22 +26,16 @@ namespace resource.package
 
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
-            {
-                extension.AnyPreview.Connect();
-                extension.AnyPreview.Register(".NUPKG", new preview.VSPreview());
-                extension.AnyPreview.Register(".NUSPEC", new preview.VSPreview());
-            }
-            {
-                await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-            }
+            extension.AnyPreview.Connect(CONSTANT.APPLICATION, CONSTANT.NAME);
+            extension.AnyPreview.Register(".NUPKG", new preview.VSPreview());
+            extension.AnyPreview.Register(".NUSPEC", new preview.VSPreview());
+            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
         }
 
         protected override int QueryClose(out bool canClose)
         {
-            {
-                extension.AnyPreview.Disconnect();
-                canClose = true;
-            }
+            extension.AnyPreview.Disconnect();
+            canClose = true;
             return VSConstants.S_OK;
         }
     }
